@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Vuebnb</title>
     <link rel="stylesheet" href="{{ mix('css/style.css') }}" type="text/css">
+    <script>
+        window.vuenbb_listing_model = "{!! addslashes(json_encode($model)) !!}";
+    </script>
 </head>
 <body>
 <div id="toolbar">
@@ -25,7 +28,6 @@
         <div class="heading">
             <h1>@{{ title }}</h1>
             <p>@{{ address }}</p>
-            <p>@{{ phone }}</p>
         </div>
         <hr>
         <div class="about">
@@ -66,7 +68,7 @@
     <div id="modal" v-bind:class="{ show: modalOpen }">
         <button v-on:click="modalOpen = false" class="modal-close">&times;</button>
         <div class="modal-content">
-            <img src="{{ asset('images/header.jpg') }}" />
+            <img v-bind:src="images[0]">
         </div>
     </div>
 </div>

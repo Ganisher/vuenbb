@@ -1,12 +1,15 @@
 import "core-js/internals/object-assign";
 import Vue from 'vue';
-import sample from './data';
+import { populateAmenitiesAndPrices } from "./helpers";
+
+let model = JSON.parse(window.vuenbb_listing_model);
+model = populateAmenitiesAndPrices(model);
 
 var app = new Vue({
     el: '#app',
-    data: Object.assign(sample, {
+    data: Object.assign(model, {
         headerImageStyle: {
-            'background-image': 'url(/images/header.jpg)'
+            'background-image': `url(${model.images[0]})`
         },
         contracted: true,
         modalOpen: false,
